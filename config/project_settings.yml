@@ -1,0 +1,6 @@
+remote:
+ endpoint_download: git@git.mobcastdev.com:iOS/BBBIosApp.git
+
+project:
+ src_dir: ios
+ product_dir: build/Debug-iphonesimulator
