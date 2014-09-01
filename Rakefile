@@ -39,7 +39,7 @@ namespace :ios do
     if !system("ios-sim --help 2>/dev/null") 
       fail "Warning ios-sim is not installed with brew. Please run 'rake calabash:environment_install'"
     end
-    system("ios-sim launch #{@conf['project']['src_dir']}/#{@conf['project']['product_dir']}/blinkbox.app --tall &")
+    system("ios-sim launch #{@conf['project']['src_dir']}/#{@conf['project']['product_dir']}/blinkbox.app --tall --retina --exit")
   end
   desc "Performs download,build and installation of app onto simulator"
   task :setup do
