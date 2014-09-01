@@ -1,3 +1,5 @@
+.irb-history
+
 *.sh
 *.png
 ios
