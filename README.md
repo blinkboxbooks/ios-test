@@ -3,6 +3,12 @@ ios-test
 
 ios native app acceptance tests
 
+Depedencies
+===========
+
+When running `rake calabash:environment_install` most components will install themselves.
+However, Xcode will need to be installed on the system with [command line tools](http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools)
+
 usage
 ====
 
