@@ -49,16 +49,16 @@ namespace :ios do
     Rake::Task["ios:compile_app"].invoke
     Rake::Task["ios:install_app"].invoke
   end
-  desc "Runs all tests"
-  task :run do
-    system("cucumber")
-  end
 end
 
 namespace :calabash do
   desc "Installs necessary tools for the development environment"
   task :environment_install do
     system("./config/dev_env_install")
+  end
+  desc "Runs all tests"
+  task :run do
+    system("cucumber")
   end
 end
 
