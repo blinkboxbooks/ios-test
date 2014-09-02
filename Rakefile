@@ -14,13 +14,13 @@ namespace :ios do
     system("calabash-ios setup #{@conf['project']['src_dir']}/") do
     end
   end
-  desc "Compile App" 
+  desc "Compile App"
   task :compile_app do
     include FileUtils
     if !Dir[@conf['project']['src_dir']].empty?
       Dir.chdir(@conf['project']['src_dir']) do
         ret = system("xcodebuild -scheme BBBApp -configuration Debug -target BBBApp-cal -sdk iphonesimulator7.1")
-        if !ret 
+        if !ret
           fail "Build failed with error"
         end
         if !Dir[@conf['project']['product_dir']].empty?
@@ -36,7 +36,7 @@ namespace :ios do
   end
   desc "Installs the app onto the simulator"
   task :install_app do
-    if !system("ios-sim --help 2>/dev/null") 
+    if !system("ios-sim --help 2>/dev/null")
       fail "Warning ios-sim is not installed with brew. Please run 'rake calabash:environment_install'"
     end
     system("ios-sim launch #{@conf['project']['src_dir']}/#{@conf['project']['product_dir']}/blinkbox.app --tall --retina --exit")
@@ -48,6 +48,10 @@ namespace :ios do
     Rake::Task["ios:generate_calabash_target"].invoke
     Rake::Task["ios:compile_app"].invoke
     Rake::Task["ios:install_app"].invoke
+  end
+  desc "Runs all tests"
+  task :run do
+    system("cucumber")
   end
 end
 
