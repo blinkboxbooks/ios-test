@@ -58,6 +58,5 @@ module PageObjectModel
         raise NoMethodError, %(undefined method '#{method_name}' for \##{self.class.inspect} with selector "#{selector}")
       end
     end
-
   end
 end
