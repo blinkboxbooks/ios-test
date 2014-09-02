@@ -1,26 +1,8 @@
-########################################
-#                                      #
-#       Important Note                 #
-#                                      #
-#   When running calabash-ios tests at #
-#   www.xamarin.com/test-cloud         #
-#   the  methods invoked by            #
-#   CalabashLauncher are overriden.    #
-#   It will automatically ensure       #
-#   running on device, installing apps #
-#   etc.                               #
-#                                      #
-########################################
+
 
 require 'calabash-cucumber/launcher'
 
 APP_BUNDLE_PATH="ios/build/Debug-iphonesimulator/blinkbox.app"
-# APP_BUNDLE_PATH = "~/Library/Developer/Xcode/DerivedData/??/Build/Products/Calabash-iphonesimulator/??.app"
-# You may uncomment the above to overwrite the APP_BUNDLE_PATH
-# However the recommended approach is to let Calabash find the app itself
-# or set the environment variable APP_BUNDLE_PATH
-
-
 Before do |scenario|
   @calabash_launcher = Calabash::Cucumber::Launcher.new
   unless @calabash_launcher.calabash_no_launch?
