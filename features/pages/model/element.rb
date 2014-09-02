@@ -11,16 +11,18 @@ module PageObjectModel
 
     attr_reader :selector
 
-    def initialize selector
+    def initialize(selector)
       @selector = selector
     end
 
     private
+
     def calabash_proxy
       @calabash_proxy ||= Class.new.extend(PageObjectModel::CalabashProxy)
     end
 
     public
+    
     def exists?
       !calabash_proxy.query(selector).empty?
     end

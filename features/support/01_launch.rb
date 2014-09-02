@@ -1,7 +1,7 @@
 
 require 'calabash-cucumber/launcher'
 
-APP_BUNDLE_PATH="ios/build/Debug-iphonesimulator/blinkbox.app"
+APP_BUNDLE_PATH = "ios/build/Debug-iphonesimulator/blinkbox.app"
 
 Before do |scenario|
   @calabash_launcher = Calabash::Cucumber::Launcher.new

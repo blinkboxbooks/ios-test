@@ -4,7 +4,7 @@ module PageObjectModel
   class Page < Calabash::IBase
     include PageOperations
 
-    def initialize(world, transition_duration=0.5)
+    def initialize(world, transition_duration = 0.5)
       logger.debug "Initializing page => #{self.class.to_s}"
       super(world, transition_duration)
     end
