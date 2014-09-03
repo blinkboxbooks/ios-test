@@ -19,6 +19,11 @@ rake ios:setup
 rake calabash:run
 ```
 
+Command line use
+```
+rake calabash:console
+```
+
 project structure
 =================
 
