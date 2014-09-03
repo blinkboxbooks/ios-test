@@ -35,9 +35,12 @@ README.md
 rake -T
 ```
 rake calabash:environment_install  # Installs necessary tools for the development environment
+rake calabash:run                  # Runs all tests
 rake ios:compile_app               # Compile App
 rake ios:generate_calabash_target  # Sets up calabash target
 rake ios:get_ios_project           # Get the BBB-ios mobile project
 rake ios:install_app               # Installs the app onto the simulator
+rake ios:reset                     # Reset all simulators [ Requires privacy accessibility enabled for terminal ]
 rake ios:setup                     # Performs download,build and installation of app onto simulator
+
 ```
