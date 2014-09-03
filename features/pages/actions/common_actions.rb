@@ -8,7 +8,7 @@ module PageObjectModel
       raise RSpec::Expectations::ExpectationNotMetError, "Page verification failed\n   Expected page: '#{page.class.to_s.demodulize}' with trait \"#{page.trait}\"\n \nTimeout: #{e.message}"
     end
 
-    def enter_app_as_anonymous_user
+    def bypass_welcome_screen
       if welcome_page.displayed?
         welcome_page.goto_library
       end
@@ -16,7 +16,7 @@ module PageObjectModel
     end
 
     def enter_app_as_existing_user
-      enter_app_as_anonymous_user
+      bypass_welcome_screen
       if anonymous_library_page.logged_out?
         anonymous_library_page.signin
         sign_in_page.await
