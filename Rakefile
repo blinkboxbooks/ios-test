@@ -41,6 +41,10 @@ namespace :ios do
     end
     system("ios-sim launch #{@conf['project']['src_dir']}/#{@conf['project']['product_dir']}/blinkbox.app --tall --retina --exit")
   end
+  desc "Reset all simulators [ Requires privacy accessibility enabled for terminal ]" 
+  task :reset do
+    system("osascript config/reset.scpt")
+  end
   desc "Performs download,build and installation of app onto simulator"
   task :setup do
     Rake::Task["ios:clean"].invoke
