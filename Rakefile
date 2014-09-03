@@ -63,10 +63,17 @@ namespace :calabash do
   desc "Runs all tests"
   task :run do
     if ENV["feature"]
-    system("cucumber #{ENV['feature']}")
+      system("cucumber #{ENV['feature']}")
     else
-    system("cucumber")
+      system("cucumber")
+    end
   end
+    desc "Run calabash console"
+    task :console do
+      include FileUtils
+      Dir.chdir(@conf['project']['src_dir']) do
+        system("APP_BUNDLE_PATH=build/Debug-iphonesimulator/blinkbox.app calabash-ios console")
+      end
   end
 end
 
