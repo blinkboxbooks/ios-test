@@ -58,7 +58,11 @@ namespace :calabash do
   end
   desc "Runs all tests"
   task :run do
+    if ENV["feature"]
+    system("cucumber #{ENV['feature']}")
+    else
     system("cucumber")
+  end
   end
 end
 
