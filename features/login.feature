@@ -3,9 +3,6 @@ Feature: Sign-in to blinkbox books
   Background: Existing user with an account ready for use
     Given a valid user account ready for use on a new device
 
-#The reinstall is necessary to avoid the
-#system trying to auto correct key entry into text fields
-
   @smoke @production @reinstall
   Scenario: Existing user successfully signs in
     Given a valid user account ready for use on a new device
