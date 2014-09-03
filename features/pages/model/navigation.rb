@@ -2,6 +2,6 @@ module PageOperations
   include Logging
 
   def tap(x, y)
-    perform_action('click_on_screen', x, y)
+    touch(nil, :offset => { :x => x, :y => y })
   end
 end
