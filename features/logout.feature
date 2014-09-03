@@ -6,6 +6,7 @@ Feature: Existing user can logout from the app
     When I sign in
     Then the user library should be displayed
 
+  @smoke @production @reinstall
   Scenario: Logging out of the app
     Given the user library should be displayed
     When I press the menu button and sign out
