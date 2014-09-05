@@ -1,0 +1,58 @@
+#!/bin/bash
+function echo_red()
+{
+  tput setaf 1
+  echo $1
+  tput sgr0
+}
+function echo_green()
+{
+  tput setaf 2
+  echo $1
+  tput sgr0
+}
+function check()
+{
+  which $1
+  if [ $? != 0 ]; then
+    echo_red "Not found"
+    return 1
+  fi
+  echo_green "Found"
+  return 0
+}
+
+echo_green "Configuration starting"
+
+check "brew" 
+if [ $? != 0 ]; then
+  echo "Installing brew"
+  `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
+  `brew doctor`
+fi
+check "wget"
+if [ $? != 0 ]; then
+  echo "Installing wget"
+  `brew install wget`
+fi
+check "rbenv"
+if [ $? != 0 ]; then
+  echo "Installing rbenv"
+  `brew install rbenv ruby-build`
+  `rbenv install 2.1.2`
+  `rbenv global 2.1.2`
+  `rbenv rehash`
+fi
+check "ios-sim"
+if [ $? != 0 ]; then
+  echo "Installing ios-sim"
+  `brew install ios-sim`
+fi
+check "calabash-ios"
+if [ $? != 0 ]; then
+  echo "Installing calabash-ios"
+  `gem install calabash-ios`
+fi
+
+
+echo_green "Configuration completed"

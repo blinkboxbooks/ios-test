@@ -1,0 +1,10 @@
+#TEST CONFIGURATION
+test:
+ environment: "production-debug"
+
+environment:
+ "production-debug":
+  url:
+   auth: https://auth.blinkboxbooks.com
+  qa:
+   host: https://api.blinkboxbooks.com/service
