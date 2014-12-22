@@ -1,9 +1,11 @@
+ruby '2.1.2'
+
 source "http://artifactory.blinkbox.local/artifactory/api/gems/bbb-gems/"
 source "http://artifactory.blinkbox.local/artifactory/api/gems/rubygems/"
 
 group :automation_libs do
   gem 'cucumber'
-  gem 'calabash-cucumber'
+  gem 'calabash-cucumber' , '0.11.4'
   gem 'rspec'
 end
 

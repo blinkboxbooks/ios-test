@@ -1,7 +1,8 @@
 
 require 'calabash-cucumber/launcher'
 
-APP_BUNDLE_PATH = "ios/build/Debug-iphonesimulator/blinkbox.app"
+#APP_BUNDLE_PATH = "ios/build/Debug-iphonesimulator/blinkbox.app"
+APP_BUNDLE_PATH = "build/blinkbox-prod.app"
 
 Before do |scenario|
   @calabash_launcher = Calabash::Cucumber::Launcher.new
@@ -10,7 +11,7 @@ Before do |scenario|
     @calabash_launcher.reset_app_jail
   end
   unless @calabash_launcher.calabash_no_launch?
-    @calabash_launcher.relaunch
+    @calabash_launcher.relaunch({:timeout => 120})
     @calabash_launcher.calabash_notify(self)
   end
 end
