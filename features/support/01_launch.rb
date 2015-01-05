@@ -1,8 +1,8 @@
-
 require 'calabash-cucumber/launcher'
+require 'calabash-cucumber/failure_helpers'
 
-#APP_BUNDLE_PATH = "ios/build/Debug-iphonesimulator/blinkbox.app"
-APP_BUNDLE_PATH="build/blinkbox-prod.app"
+#APP_BUNDLE_PATH="build/blinkbox.app"
+#APP_BUNDLE_PATH="build/blinkbox-prod.app"
 
 Before do |scenario|
   @calabash_launcher = Calabash::Cucumber::Launcher.new
@@ -17,6 +17,9 @@ Before do |scenario|
 end
 
 After do |scenario|
+  if scenario.failed?
+    screenshot_embed(:prefix => conf_data['project']['log_screenshot_folder'])
+  end
   unless @calabash_launcher.calabash_no_stop?
     calabash_exit
     if @calabash_launcher.active?

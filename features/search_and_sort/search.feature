@@ -2,10 +2,10 @@ Feature: Search results
   Search valid book name, author name and verify search result is displayed
 
   Background:
-    Given a valid user account ready for use on a new device
-    And I am signed in
-    #Given the My Library screen is displayed
-    #Then I choose to search from the My Library page
+    #Given a valid user account ready for use on a new device
+    #And I am signed in
+    Given the My Library screen is displayed
+    Then I choose to search from the My Library page
 
   Scenario Outline: Navigating through the app on the device
     When I enter <query> as the search term
@@ -14,9 +14,9 @@ Feature: Search results
 
   @smoke
   Examples:
-    | query                                     |
-  #  | A Brief History Of Time |
-    | A Brief History Of Time - Stephen Hawking |
+    | query            |
+  # | A Brief History Of Time |
+    | Malcolm Gladwell |
 
   Examples:
     | query                                     |
