@@ -11,7 +11,14 @@ Before do |scenario|
     @calabash_launcher.reset_app_jail
   end
   unless @calabash_launcher.calabash_no_launch?
-    @calabash_launcher.relaunch({:timeout => 120})
+    if ENV['BBB_ENV'].nil?
+      extra_args = ['-e BBB_ENV PROD']
+      puts "BBB_ENV was not set, so I am using PROD (valid options are DEVINT, QA or PROD)"
+    else
+      extra_args = ["-e BBB_ENV #{ENV['BBB_ENV']}"]
+      puts "BBB_ENV was set to #{ENV['BBB_ENV']}"
+    end
+    @calabash_launcher.relaunch({:timeout => 120, args: extra_args})
     @calabash_launcher.calabash_notify(self)
   end
 end
