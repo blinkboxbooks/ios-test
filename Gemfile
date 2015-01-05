@@ -14,13 +14,14 @@ group :misc_libs do
   gem 'sys-proctable'
   gem 'require_all'
   gem 'activesupport'
+  gem 'awesome_print'
 end
 
 group :api do
   gem 'multi_json'
   gem 'json'
   gem 'httparty'
-  gem 'blinkbox-user'
+  gem 'blinkbox-user', '0.3.3'
   gem 'activesupport-inflector'
 end
 

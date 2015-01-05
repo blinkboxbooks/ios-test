@@ -22,7 +22,7 @@ module PageObjectModel
     end
 
     public
-    
+
     def exists?
       !calabash_proxy.query(selector).empty?
     end
@@ -39,7 +39,19 @@ module PageObjectModel
 
     def set(text)
       clear_text
-      enter_text(text)
+      keyboard_enter_text(text)
+    end
+
+    def get_text
+      query(:text)
+    end
+
+    def visible?
+      begin
+        calabash_proxy.when_element_exists(selector, timeout: 5, action: lambda {return true})
+      rescue
+        false
+      end
     end
 
     #@examples:

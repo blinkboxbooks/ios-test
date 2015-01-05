@@ -5,3 +5,16 @@ project:
  src_dir: ios
  product_dir: build/Debug-iphonesimulator
  app_bundle_path: ios/build/Debug-iphonesimulator/blinkbox.app
+
+
+#BUILD AND INSTALLATION
+remote:
+ endpoint_download: http://grisham:8111/repository/downloadAll/Books_Android_Application_Build/latest.lastSuccessful/artifacts --user=UNAME --password=PWORD
+ endpoint_download_build: http://grisham:8111/repository/downloadAll/Books_Android_Application_Build/BUILDNUM:id/ --user=UNAME --password=PWORD
+ endpoint_payload: artifacts
+project:
+ build_dir: build
+ log_html_path: results/output.html
+ log_device_folder: results/device_logs/
+ log_screenshot_folder: results/screenshots/
+ log_level: I
