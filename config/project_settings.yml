@@ -14,7 +14,7 @@ remote:
  endpoint_payload: artifacts
 project:
  build_dir: build
- log_html_path: features/results/output.html
- log_device_folder: features/results/device_logs/
- log_screenshot_folder: features/results/screenshots/
+ log_html_path: results/output.html
+ log_device_folder: results/device_logs/
+ log_screenshot_folder: results/screenshots/
  log_level: I
