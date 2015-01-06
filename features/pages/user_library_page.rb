@@ -2,7 +2,9 @@ module PageObjectModel
   class UserLibraryPage < PageObjectModel::Page
     trait "UIImageView marked:’blink box_nav_logo'"
 
+    #books list
     element :first_book_options, "UIButton marked:'Options' index:0"
+    #element :first_book_cover, "UIBookCollectionViewCell"
 
     section :common_top_nav, CommonTopNavSection
     section :common_settings_menu, CommonSettingsMenuSection
@@ -29,6 +31,10 @@ module PageObjectModel
 
     def invoke_search
       common_top_nav.search_button.touch
+    end
+
+    def open_first_book
+      book_cover_first.tap_when_element_exists(timeout: timeout_short)
     end
 
   end

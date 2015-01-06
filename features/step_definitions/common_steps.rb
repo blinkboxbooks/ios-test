@@ -19,3 +19,7 @@ end
 And(/^I press enter$/) do
   done
 end
+
+And(/^I navigate back to My Library from the Book Reader$/) do
+  navigate_back_to_my_library_from_book_reader
+end
