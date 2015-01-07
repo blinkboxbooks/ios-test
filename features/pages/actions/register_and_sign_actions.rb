@@ -2,7 +2,7 @@ module PageModels
   module RegisterAndSigninActions
     def enter_app_as_anonymous_user
       welcome_page.try_it_out if welcome_page.displayed?
-      dismiss_info_panel
+      #dismiss_info_panel
     end
 
     def dismiss_info_panel
@@ -16,7 +16,7 @@ module PageModels
 
     def enter_app_as_existing_user
       enter_app_as(test_data['users']['existing']['emailaddress'], test_data['users']['existing']['password'])
-      dismiss_info_panel
+      #dismiss_info_panel
       expect_page(my_library_page)
     end
 

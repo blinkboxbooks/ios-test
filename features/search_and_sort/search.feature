@@ -10,18 +10,18 @@ Feature: Search results
   Scenario Outline: Navigating through the app on the device
     When I enter <query> as the search term
     Then I should see search suggestions
-    And I should see <query> in the search suggestions
+    And I should see <query result> in the search suggestions
 
   @smoke
   Examples:
-    | query            |
-    | Malcolm Gladwell |
+    | query            | query result     |
+    | Malcolm Gladwell | Malcolm Gladwell |
 
   @sanity
   Examples:
-    | query                                     |
-    | Malcolm Gladwell                          |
-    | A Brief History Of Time - Stephen Hawking |
+    | query            | query result                       |
+    | Malcolm Gladwell | Malcolm Gladwell                   |
+    | My Brief History | My Brief History - Stephen Hawking |
 
   @sanity
   Scenario: Entering some jibberish should show the empty search results page
