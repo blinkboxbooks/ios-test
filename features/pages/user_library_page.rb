@@ -1,6 +1,7 @@
 module PageObjectModel
   class UserLibraryPage < PageObjectModel::Page
     trait "UIImageView marked:’blink box_nav_logo'"
+    element :info_panel_button, "UIButton marked:'icon close'"
 
     #books list
     element :first_book_options, "UIButton marked:'Options' index:0"
@@ -8,6 +9,12 @@ module PageObjectModel
 
     section :common_top_nav, CommonTopNavSection
     section :common_settings_menu, CommonSettingsMenuSection
+
+    def dismiss_info_panel
+      if info_panel_button.visible?
+        until_element_does_not_exist(info_panel_button.selector, :action => lambda { info_panel_button.touch }, :retry_frequency => 1, :timeout => timeout_short)
+      end
+    end
 
     def open_first_book_options
       first_book_options.wait_tap(timeout: timeout_short)

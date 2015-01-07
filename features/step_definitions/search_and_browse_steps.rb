@@ -12,7 +12,7 @@ Then(/^I choose to search from the (?:Reading|My Library) page$/) do
 end
 
 And(/^I should see (.*) in the search suggestions$/) do |search_string|
-  expect(search_page.search_results).to include(search_string)
+  wait_for(timeout:5) { expect(search_page.search_results).to include(search_string) }
 end
 
 Then(/^search results should be displayed$/) do
