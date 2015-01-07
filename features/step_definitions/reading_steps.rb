@@ -1,5 +1,5 @@
 Given(/^I open the first book$/) do
-  #user_library_page.open_first_book
+  user_library_page.open_first_book
 end
 
 And(/turn (\d+) pages forward$/) do |pages_to_turn|

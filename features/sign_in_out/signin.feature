@@ -3,7 +3,7 @@ Feature: Sign in into blinkbox books
   Background: Deregister devices for an existing user
     Given a valid user account ready for use on a new device
 
-  @smoke
+  @sanity
   Scenario: Existing user successfully signs in via the User Library page
     Given the My Library screen is displayed
     When I navigate to the Sign in page

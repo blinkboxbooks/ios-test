@@ -15,14 +15,15 @@ Feature: Search results
   @smoke
   Examples:
     | query            |
-  # | A Brief History Of Time |
     | Malcolm Gladwell |
 
+  @sanity
   Examples:
     | query                                     |
     | Malcolm Gladwell                          |
     | A Brief History Of Time - Stephen Hawking |
 
+  @sanity
   Scenario: Entering some jibberish should show the empty search results page
     When I enter somejibberish as the search term
     And I press enter
@@ -40,6 +41,7 @@ Feature: Search results
     Then search results should be displayed
     And the title of first book displayed should contain fifty shades of grey
 
+  @sanity
   Scenario: Exact match on ISBN
     When I enter 9780571267064 as the search term
     And I press enter

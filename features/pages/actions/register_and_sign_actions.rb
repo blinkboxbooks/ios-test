@@ -16,6 +16,8 @@ module PageModels
 
     def enter_app_as_existing_user
       enter_app_as(test_data['users']['existing']['emailaddress'], test_data['users']['existing']['password'])
+      dismiss_info_panel
+      expect_page(my_library_page)
     end
 
     def enter_app_as(username, password)

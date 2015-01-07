@@ -34,7 +34,8 @@ module PageObjectModel
     end
 
     def open_first_book
-      book_cover_first.tap_when_element_exists(timeout: timeout_short)
+      first_book_options.wait_for_element_exists(timeout: timeout_short)
+      touch(first_book_options.selector, :offset => {:x => 0, :y => -50})
     end
 
   end
