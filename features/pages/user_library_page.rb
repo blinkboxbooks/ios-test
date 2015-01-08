@@ -28,11 +28,11 @@ module PageObjectModel
 
     def open_settings_and_sign_in
       open_settings
-      common_settings_menu.sign_in.wait_tap(timeout: timeout_short)
+      common_settings_menu.sign_in.wait_tap(timeout: timeout_long)
     end
 
     def open_settings
-      common_settings_menu.settings_button.wait_tap(timeout: timeout_short)
+      common_settings_menu.settings_button.wait_tap(timeout: timeout_long)
       sleep 1 #its a bit too quick and tries to press the button too quick if you use wait_tap
     end
 
