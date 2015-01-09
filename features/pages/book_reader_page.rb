@@ -7,6 +7,11 @@ module PageObjectModel
     element :add_bookmark_icon, "UIImageView marked:'icon_bookmark_add'"
     element :remove_bookmark_icon, "UIImageView marked:'icon_bookmark_delete'"
 
+    ###Callout PopUp
+    element :copy_callout_option, "UICalloutBarButton UIButton marked:'Copy'"
+    element :define_callout_option, "UICalloutBarButton UIButton marked:'Define'"
+    element :highlight_callout_option, "UICalloutBarButton UIButton marked:'Highlight'"
+
     section :reading_option_menu, BookReaderPageOptionsMenuSection
     section :reading_header_bar, BookReaderPageHeaderSection
     section :reading_footer_bar, BookReaderPageFooterSection
@@ -81,6 +86,27 @@ module PageObjectModel
 
     def wait_for_bookmark_to_appear
       remove_bookmark_icon.wait_for_element_exists(timeout: timeout_short)
+    end
+
+    def wait_for_callout_options
+      wait_for_elements_exist(
+          [
+              copy_callout_option.selector,
+              define_callout_option.selector,
+              highlight_callout_option.selector
+          ],:timeout => timeout_long)
+    end
+
+    def invoke_callout_popup
+      webview_reader.wait_for_element_exists(timeout: timeout_short)
+      sleep 2
+      webview_reader.touch_hold
+      wait_for_callout_options
+    end
+
+    def invoke_callout_popup_and_choose(option)
+      invoke_callout_popup
+      touch("* marked:'#{option}'")
     end
 
 end

@@ -1,17 +1,14 @@
 module PageObjectModel
-  class DefinitionsPage < PageObjectModel::Page
+  class EmptyDefinitionsPage < PageObjectModel::Page
 
-    trait "UIButton marked:'Done'"
-    element :done_button, "UIButton marked:'Done'"
-    element :manage_button, "UIButton marked:'Manage'"
-    element :search_web_button, "UIButton marked:'Search Web'"
+    trait "UILabel marked:'No definition found.'"
 
   end
 
 end
 
 module PageObjectModel
-  def definitions_page
-    @_definitions_page ||= page(DefinitionsPage)
+  def empty_definitions_page
+    @_empty_definitions_page ||= page(EmptyDefinitionsPage)
   end
 end

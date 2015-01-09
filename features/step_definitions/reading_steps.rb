@@ -18,3 +18,7 @@ end
 And(/^I set the book slider position to (\d+)$/) do |position|
   book_reader_page.move_slider_to_position(position)
 end
+
+Given(/^I invoke the (Define|Highlight) functionality on the reader$/) do |option|
+  book_reader_page.invoke_callout_popup_and_choose(option)
+end
