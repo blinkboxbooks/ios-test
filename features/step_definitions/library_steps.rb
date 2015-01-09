@@ -9,3 +9,7 @@ end
 When(/^I click on the settings menu$/) do
   open_settings_menu
 end
+
+When(/^I navigate to (.*) from the user library settings menu$/) do |settings_menu_item|
+  open_settings_menu_and_choose(settings_menu_item)
+end
