@@ -12,3 +12,4 @@ Feature: My Library Options Menu
       | Contents       |
       | Read           |
       | Remove         |
+      |Cancel          |
