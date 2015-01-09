@@ -45,6 +45,10 @@ module PageObjectModel
       touch(first_book_options.selector, :offset => {:x => 0, :y => -50})
     end
 
+    def open_option_button
+      open_first_book_options
+    end
+
   end
 end
 
