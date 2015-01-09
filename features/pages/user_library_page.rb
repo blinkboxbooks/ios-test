@@ -9,10 +9,11 @@ module PageObjectModel
 
     section :common_top_nav, CommonTopNavSection
     section :common_settings_menu, CommonSettingsMenuSection
+    section :user_library_sliding_tabs, UserLibrarySlidingTabsSection
 
     def dismiss_info_panel
       if info_panel_button.visible?
-        until_element_does_not_exist(info_panel_button.selector, :action => lambda { info_panel_button.touch }, :retry_frequency => 1, :timeout => timeout_short)
+        until_element_does_not_exist(info_panel_button.selector, :action => lambda { info_panel_button.touch }, :retry_frequency => 1, :timeout => timeout_long)
       end
     end
 
@@ -47,6 +48,16 @@ module PageObjectModel
 
     def open_option_button
       open_first_book_options
+    end
+
+    def goto_reading_tab
+      dismiss_info_panel
+      user_library_sliding_tabs.reading_tab.touch
+    end
+
+    def goto_my_library_tab
+      dismiss_info_panel
+      user_library_sliding_tabs.my_library_tab.touch
     end
 
   end

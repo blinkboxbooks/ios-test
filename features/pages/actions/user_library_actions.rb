@@ -23,6 +23,24 @@ module PageObjectModel
       return @book_author,@book_title
     end
 
+    def goto_user_library_tab(user_option)
+      case user_option
+        when "Reading"
+          user_library_page.goto_reading_tab
+        when "My Library"
+          user_library_page.goto_my_library_tab
+        else
+          fail "Unsupported button '#{negate}' in the User library area"
+      end
+    end
+
+    def open_first_book_in_user_library(library_section)
+      goto_user_library_tab(library_section)
+      user_library_page.open_first_book
+      expect_page(book_reader_page)
+      #wait_for_book_reader_page
+    end
+
     #  def read_first_book
     #    user_library_page.from_options_menu_choose("Read")
     #    wait_for_book_reader_page

@@ -14,3 +14,7 @@ When(/^I open the first book for reading$/) do
   user_library_page.choose_from_options_menu("Read")
   expect_page(book_reader_page)
 end
+
+And(/^I set the book slider position to (\d+)$/) do |position|
+  book_reader_page.move_slider_to_position(position)
+end
