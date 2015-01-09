@@ -5,8 +5,6 @@ require 'calabash-cucumber/failure_helpers'
 #APP_BUNDLE_PATH="build/blinkbox-prod.app"
 
 Before do |scenario|
-  #This command below should eliminate the need to manually enter the password when instruments launches.
-  system("security unlock-keychain -p M0bc45TTM0bc45TT #{"${HOME}/Library/Keychains/login.keychain"}")
   @calabash_launcher = Calabash::Cucumber::Launcher.new
   scenario_tags = scenario.source_tag_names
   if scenario_tags.include?('@reinstall')
