@@ -4,8 +4,7 @@ Feature: Bookmarking
   Background:
     Given the My Library screen is displayed
     When I open the first book on the My Library page
-    And turn 15 pages forward
-    #And I set the book slider position to 10
+    And turn 20 pages forward
 
   @sanity
   Scenario: I am able to add/remove a bookmark using the Book Reader page

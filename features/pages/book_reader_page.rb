@@ -97,6 +97,15 @@ module PageObjectModel
           ],:timeout => timeout_long)
     end
 
+    def wait_for_callout_options_not_to_exist
+      wait_for_elements_do_not_exist(
+          [
+              copy_callout_option.selector,
+              define_callout_option.selector,
+              highlight_callout_option.selector
+          ],:timeout => timeout_long)
+    end
+
     def invoke_callout_popup
       webview_reader.wait_for_element_exists(timeout: timeout_short)
       sleep 2
@@ -107,6 +116,7 @@ module PageObjectModel
     def invoke_callout_popup_and_choose(option)
       invoke_callout_popup
       touch("* marked:'#{option}'")
+      wait_for_callout_options_not_to_exist
     end
 
 end

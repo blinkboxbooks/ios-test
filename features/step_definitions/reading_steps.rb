@@ -22,3 +22,7 @@ end
 Given(/^I invoke the (Define|Highlight) functionality on the reader$/) do |option|
   book_reader_page.invoke_callout_popup_and_choose(option)
 end
+
+Then(/^I can see that the text has been highlighted$/) do
+  pending
+end
