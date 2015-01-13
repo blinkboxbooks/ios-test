@@ -1,9 +1,14 @@
-<% ci_opts = " -r features --color --tags ~@on_demand --tags ~@wip --tags ~@unstable --tags ~@manual --tags ~@pending --format junit -o results/junit/ --format json -o results/cucumber.json --format Cucumber::Blinkbox::Formatter::Html -o results/features_report.html --format pretty"  %>
+<% ci_opts = " -r features --color --tags ~@on_demand --tags ~@wip --tags ~@unstable --tags ~@manual --tags ~@pending --format junit -o results/junit/ --format Cucumber::Blinkbox::Formatter::Html -o features_report.html --format pretty"  %>
 
-default: -p local_debug
-local_debug: -r features --tags ~@wip environment=production debug=true --format pretty
+#default: -p local_debug
+#local_debug: -r features --tags ~@wip environment=production debug=true --format pretty --color
 
-ci-smoke-qa:          <%= ci_opts %> --tags @smoke environment=qa
-ci-regression-qa:     <%= ci_opts %> --tags ~@smoke environment=qa
-
-ci-smoke-production:  <%= ci_opts %> --tags @smoke --tags @production environment=production
+ci-smoke-dev-debug:             <%= ci_opts %> --tags @smoke environment=dev-debug BBB_ENV=DEVINT
+ci-smoke-qa-debug:              <%= ci_opts %> --tags @smoke environment=qa-debug BBB_ENV=QA
+ci-smoke-production-debug:      <%= ci_opts %> --tags @smoke environment=production-debug BBB_ENV=PROD
+ci-sanity-dev-debug:            <%= ci_opts %> --tags @smoke,@sanity environment=dev-debug BBB_ENV=DEVINT
+ci-sanity-qa-debug:             <%= ci_opts %> --tags @smoke,@sanity environment=qa-debug BBB_ENV=QA
+ci-sanity-production-debug:     <%= ci_opts %> --tags @smoke,@sanity environment=production-debug BBB_ENV=PROD
+ci-regression-dev-debug:        <%= ci_opts %> environment=dev-debug BBB_ENV=DEVINT
+ci-regression-qa-debug:         <%= ci_opts %> environment=qa-debug BBB_ENV=QA
+ci-regression-production-debug: <%= ci_opts %> environment=production-debug BBB_ENV=PROD

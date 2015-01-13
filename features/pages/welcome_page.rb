@@ -1,9 +1,15 @@
 module PageObjectModel
   class WelcomePage < PageObjectModel::Page
-    trait "* marked:'Sign in or Register'"
-    element :try_it_out_button, "* marked:'Try it out'"
-    def goto_library
+    trait "UIButton marked:'Try it out'"
+    element :try_it_out_button, "UIButton marked:'Try it out'"
+    element :sign_up_button, "UIButton marked:'Sign in'"
+
+    def try_it_out
       try_it_out_button.touch
+    end
+
+    def sign_up
+      sign_up_button.touch
     end
   end
 end

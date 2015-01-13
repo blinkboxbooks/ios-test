@@ -1,7 +1,8 @@
-
 require 'calabash-cucumber/launcher'
+require 'calabash-cucumber/failure_helpers'
 
-APP_BUNDLE_PATH = "ios/build/Debug-iphonesimulator/blinkbox.app"
+#APP_BUNDLE_PATH="build/blinkbox.app"
+#APP_BUNDLE_PATH="build/blinkbox-prod.app"
 
 Before do |scenario|
   @calabash_launcher = Calabash::Cucumber::Launcher.new
@@ -10,12 +11,21 @@ Before do |scenario|
     @calabash_launcher.reset_app_jail
   end
   unless @calabash_launcher.calabash_no_launch?
-    @calabash_launcher.relaunch
+    if ENV['BBB_ENV'].nil?
+      abort "BBB_ENV was not set, valid options are DEVINT, QA or PROD"
+    else
+      extra_args = ["-e BBB_ENV #{ENV['BBB_ENV']}"]
+      puts "BBB_ENV was set to #{ENV['BBB_ENV']}"
+    end
+    @calabash_launcher.relaunch({:timeout => 120, args: extra_args})
     @calabash_launcher.calabash_notify(self)
   end
 end
 
 After do |scenario|
+  if scenario.failed?
+    screenshot_embed(:prefix => conf_data['project']['log_screenshot_folder'])
+  end
   unless @calabash_launcher.calabash_no_stop?
     calabash_exit
     if @calabash_launcher.active?

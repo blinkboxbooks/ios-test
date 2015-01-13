@@ -1,10 +1,16 @@
 #TEST CONFIGURATION
-test:
- environment: "production-debug"
+environment: "production-debug"
 
-environment:
- "production-debug":
-  url:
-   auth: https://auth.blinkboxbooks.com
-  qa:
-   host: https://api.blinkboxbooks.com/service
+environments:
+ production-debug:
+  web: https://www.blinkboxbooks.com
+  auth_url: https://auth.blinkboxbooks.com
+  api_url: https://api.blinkboxbooks.com
+ qa-debug:
+  web: https://www.qa.bbbtest1.com
+  auth_url: https://auth.qa.bbbtest2.com
+  api_url: https://api.qa.bbbtest2.com
+ dev-debug:
+  web: https://www.test.bbbtest1.com
+  auth_url: https://auth.dev.bbbtest2.com
+  api_url: https://api.dev.bbbtest2.com
