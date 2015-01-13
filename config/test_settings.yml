@@ -11,6 +11,6 @@ environments:
   auth_url: https://auth.qa.bbbtest2.com
   api_url: https://api.qa.bbbtest2.com
  dev-debug:
-  web: www.test.bbbtest1.com
+  web: https://www.test.bbbtest1.com
   auth_url: https://auth.dev.bbbtest2.com
   api_url: https://api.dev.bbbtest2.com
