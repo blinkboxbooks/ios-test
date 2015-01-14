@@ -37,5 +37,3 @@ Feature: Reset password
     | no_thanks@to_you     |
     | 2233@blah            |
     | testblinknow         |
-
-
