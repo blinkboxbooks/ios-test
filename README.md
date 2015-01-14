@@ -24,6 +24,18 @@ Command line use
 rake calabash:console
 ```
 
+running a test
+=============
+
+BBB_ENV=PROD RESET_BETWEEN_SCENARIOS=1 APP_BUNDLE_PATH=build/blinkbox.app cucumber -r features features/library/library_navigation.feature 
+
+BBB_ENV=PROD > sets the blinkbox.app to point to 'PROD' (valid options are DEVINT, QA, PROD).
+
+RESET_BETWEEN_SCENARIOS=1 > ensures that the simulator is reset between each scenario.
+
+APP_BUNDLE_PATH=build/blinkbox.app > location of thr .app file under test.
+
+
 project structure
 =================
 
