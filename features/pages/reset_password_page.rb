@@ -41,8 +41,6 @@ module PageObjectModel
     def click_on_ok_to_close_popup
       ok_button_from_popup.touch
     end
-
-
   end
 end
 

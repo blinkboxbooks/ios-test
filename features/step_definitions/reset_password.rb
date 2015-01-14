@@ -11,7 +11,7 @@ When(/^I enter an email address (registered|not registered) with blinkbox books$
   reset_password_page.enter_email_address(email_address)
 end
 
-When(/^I tap on Send reset link button(?: without entering email address)?$/) do
+When(/^I tap on reset password button(?: without entering email address)?$/) do
   reset_password_page.click_on_reset_password_button
 end
 
