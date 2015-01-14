@@ -25,6 +25,11 @@ module PageObjectModel
       end
     end
 
+    def click_on_reset_password_link
+      forgotten_password_link.wait_for_element_exists
+      forgotten_password_link.touch
+    end
+
   end
 end
 
