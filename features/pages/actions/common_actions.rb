@@ -1,6 +1,5 @@
 module PageObjectModel
   module PageActions
-
     def expect_page(page)
       page.await(timeout: 15)
       expect(page).to be_displayed
