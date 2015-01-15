@@ -32,5 +32,4 @@ Feature: Sign in into blinkbox books
 
   Examples:
     | invalid_credentials        |
-    | unregistered email address |
     | incorrect password         |

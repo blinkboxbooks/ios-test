@@ -39,7 +39,6 @@ module PageObjectModel
                        signin_incorrect_email_password_popup.try_again_link.selector
                    ])
     end
-
   end
 end
 
