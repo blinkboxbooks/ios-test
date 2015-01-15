@@ -14,6 +14,10 @@ module PageModels
       sign_in_page.await
     end
 
+    def submit_sign_in_details(email_address, password)
+      sign_in_page.submit_sign_in_details(email_address, password)
+    end
+
     def enter_app_as_existing_user
       enter_app_as(test_data['users']['existing']['emailaddress'], test_data['users']['existing']['password'])
       #dismiss_info_panel
