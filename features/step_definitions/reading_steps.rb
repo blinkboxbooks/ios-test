@@ -26,7 +26,3 @@ end
 Then(/^I can see that the text has been highlighted$/) do
   pending
 end
-
-And(/^I go to end of the book$/) do
-  go_to_end_of_the_embedded_book
-end

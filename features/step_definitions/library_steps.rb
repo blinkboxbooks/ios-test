@@ -17,7 +17,3 @@ end
 And(/^I open the first book on the (My Library|Reading) page$/) do |negate|
   open_first_book_in_user_library(negate)
 end
-
-And(/^I capture the current number of books in My Library$/) do
-  @my_lib_book_count = my_library_page.current_number_of_books_in_my_library
-end
