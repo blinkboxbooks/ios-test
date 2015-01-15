@@ -6,7 +6,7 @@ Feature: Bookmarking
     When I open the first book on the My Library page
     And turn 20 pages forward
 
-  @sanity
+  @unstable
   Scenario: I am able to add/remove a bookmark using the Book Reader page
    Given I choose to add a bookmark using the Book Reader page
    Then I choose to remove a bookmark using the Book Reader page
