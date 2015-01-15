@@ -19,3 +19,7 @@ end
 And(/^I should see the "([^"]*)" option in the settings menu$/) do |expected_text|
   expect_option_in_settings_menu(expected_text)
 end
+
+And(/^I see the incorrect email address and password error message popup with send reset link$/) do
+  expect(sign_in_page).to have_incorrect_credentials_popup
+end

@@ -58,15 +58,26 @@ module PageObjectModel
       #@book_chapter = reading_footer_bar.chapter_label.text
       #book_progress_string = reading_footer_bar.progress_label.text
       #@book_progress = book_progress_string.slice(0..(book_progress_string.index('%')))
+      puts @footer_text
     end
 
     def move_slider_to_position(progress_percentage)
       value = progress_percentage.to_f/100
       invoke_web_reader_header_and_footer
       query(reading_footer_bar.slider.selector, [{setValue:value},{animated:1}])
+      #wait_for(:timeout => 15 ) { expect(reading_footer_bar.chapter_and_progress_label).to include('100') }
+      #wait_poll(until_exists: reading_footer_bar.chapter_and_progress_label.include?('100'), timeout: timeout_short)
+      #reading_footer_bar.chapter_and_progress_label.include('100').wait_for_element_exists(timeout: timeout_short)
       sleep 1
       close_web_reader_header_and_footer
     end
+
+    #def move_slider_to_position(progress, direction = :right)
+     # invoke_web_reader_header_and_footer
+     # pan(reading_footer_bar.slider, direction, from: {x: 0, y: 0}, to: {x:progress.to_i , y:0})
+     # sleep 1
+    #  close_web_reader_header_and_footer
+   # end
 
     def add_bookmark_via_webview_reader
       invoke_web_reader_header_and_footer

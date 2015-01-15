@@ -1,5 +1,10 @@
 module PageObjectModel
   module PageActions
+    def expect_activity(activity)
+      wait_for(:timeout => 15 ) { expect(current_activity).to include(activity) }
+    rescue => e
+      raise RSpec::Expectations::ExpectationNotMetError, "Activity verification failed\n   Expected Activity: '#{activity}' \nTimeout: #{e.message}"
+    end
 
     def expect_page(page)
       page.await(timeout: 15)

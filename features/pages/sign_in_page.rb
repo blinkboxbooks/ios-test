@@ -8,6 +8,8 @@ module PageObjectModel
     element :show_password_switch, "UISwitch"
     element :forgotten_password_link, "UIButton marked:'Forgotten your password?'"
 
+    section :signin_incorrect_email_password_popup, IncorrectEmailPasswordPopupSection
+
     def submit_sign_in_details(username, password)
       email_address_field.touch
       wait_for_keyboard
@@ -28,6 +30,14 @@ module PageObjectModel
     def click_on_reset_password_link
       forgotten_password_link.wait_for_element_exists
       forgotten_password_link.touch
+    end
+
+    def has_incorrect_credentials_popup?
+      assert_popup([
+                       signin_incorrect_email_password_popup.incorrect_email_password_popup_title.selector,
+                       signin_incorrect_email_password_popup.send_reset_link.selector,
+                       signin_incorrect_email_password_popup.try_again_link.selector
+                   ])
     end
 
   end
