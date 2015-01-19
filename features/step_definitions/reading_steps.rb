@@ -11,7 +11,6 @@ And(/turn (\d+) pages backward$/) do |pages_to_turn|
 end
 
 When(/^I open the first book for reading$/) do
-  user_library_page.dismiss_info_panel
   user_library_page.choose_from_options_menu("Read")
   expect_page(book_reader_page)
 end
