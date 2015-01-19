@@ -33,5 +33,5 @@ Given(/^I choose "([^"]*)" from the Options menu$/) do |option|
 end
 
 And(/^I go back to user library screen$/) do
-  navigate_back_to_user_library
+  navigate_back_to_my_library_from_book_reader
 end

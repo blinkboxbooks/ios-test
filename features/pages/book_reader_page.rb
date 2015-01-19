@@ -125,12 +125,6 @@ module PageObjectModel
       wait_tap("* marked:'#{option}'")
     end
 
-    def click_on_the_back_button
-      invoke_web_reader_header_and_footer
-      reading_header_bar.back_button.wait_for_element_exists(timeout: timeout_short)
-      reading_header_bar.back_button.touch
-    end
-
 end
 
 end
