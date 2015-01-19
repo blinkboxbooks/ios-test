@@ -80,7 +80,6 @@ module PageObjectModel
       ok_button.touch
       first_book_options.wait_for_element_does_not_exist(timeout: timeout_short)
     end
-
   end
 end
 

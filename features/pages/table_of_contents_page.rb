@@ -15,7 +15,6 @@ module PageObjectModel
       @content_book_title = content_book_title.text
       return @content_book_title
     end
-
   end
 end
 
