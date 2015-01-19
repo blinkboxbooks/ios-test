@@ -119,6 +119,18 @@ module PageObjectModel
       wait_for_callout_options_not_to_exist
     end
 
+    def choose_option_from_reading_menu(option)
+      invoke_web_reader_header_and_footer
+      reading_option_menu.option_menu.wait_tap(timeout: timeout_short)
+      wait_tap("* marked:'#{option}'")
+    end
+
+    def click_on_the_back_button
+      invoke_web_reader_header_and_footer
+      reading_header_bar.back_button.wait_for_element_exists(timeout: timeout_short)
+      reading_header_bar.back_button.touch
+    end
+
 end
 
 end

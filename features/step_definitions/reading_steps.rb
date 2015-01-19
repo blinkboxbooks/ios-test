@@ -11,6 +11,7 @@ And(/turn (\d+) pages backward$/) do |pages_to_turn|
 end
 
 When(/^I open the first book for reading$/) do
+  user_library_page.dismiss_info_panel
   user_library_page.choose_from_options_menu("Read")
   expect_page(book_reader_page)
 end
@@ -25,4 +26,12 @@ end
 
 Then(/^I can see that the text has been highlighted$/) do
   pending
+end
+
+Given(/^I choose "([^"]*)" from the Options menu$/) do |option|
+  user_library_page.choose_from_options_menu(option)
+end
+
+And(/^I go back to user library screen$/) do
+  navigate_back_to_user_library
 end
