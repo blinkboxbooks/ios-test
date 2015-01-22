@@ -1,11 +1,14 @@
 module PageObjectModel
   class BookReaderPage < PageObjectModel::Page
 
-    attr_accessor :footer_text#:book_chapter, :book_progress, :book_title
+    attr_accessor :footer_text, :book_chapter, :book_progress, :book_title
+
     trait "BBBWebView"
     element :webview_reader, "BBBWebView"
     element :add_bookmark_icon, "UIImageView marked:'icon_bookmark_add'"
     element :remove_bookmark_icon, "UIImageView marked:'icon_bookmark_delete'"
+    element :back_to_last_reading_position_link, "UIButton marked:'go back'"
+    element :dismiss_button, "UIButton marked:'icon cross2'"
 
     ###Callout PopUp
     element :copy_callout_option, "UICalloutBarButton UIButton marked:'Copy'"
@@ -53,6 +56,11 @@ module PageObjectModel
       wait_for_elements_do_not_exist([reading_header_bar.header_bar.selector,reading_footer_bar.slider.selector], timeout: timeout_long)
     end
 
+    def get_header_and_footer_text
+      invoke_web_reader_header_and_footer
+      capture_footer_text
+    end
+
     def capture_footer_text
       @footer_text = reading_footer_bar.chapter_and_progress_label.text
       #@book_chapter = reading_footer_bar.chapter_label.text
@@ -88,6 +96,16 @@ module PageObjectModel
       remove_bookmark_icon.wait_for_element_exists(timeout: timeout_short)
     end
 
+    def back_to_last_reading_position
+      back_to_last_reading_position_link.wait_tap(timeout: timeout_short)
+    end
+
+    def choose_option_from_reading_menu(option)
+      invoke_web_reader_header_and_footer
+      reading_header_bar.button_options.wait_tap(timeout: timeout_short)
+      wait_tap("* marked:'#{option}'")
+    end
+
     def wait_for_callout_options
       wait_for_elements_exist(
           [
@@ -119,8 +137,10 @@ module PageObjectModel
       wait_for_callout_options_not_to_exist
     end
 
-end
-
+    def go_back
+      reading_header_bar.back_button.touch
+    end
+  end
 end
 
 module PageObjectModel
