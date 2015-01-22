@@ -42,7 +42,6 @@ module PageObjectModel
 
     def read_first_book
       user_library_page.choose_from_options_menu("Read")
-      #wait_for_book_reader_page
       expect_page(book_reader_page)
     end
   end
