@@ -9,8 +9,7 @@ module PageObjectModel
     end
 
     def choose_not_to_sign_in
-      sleep 2
-      touch("UILabel marked:'No'")
+      book_reader_your_bookmarks_highlights_page.click_on_no_button
     end
   end
 end

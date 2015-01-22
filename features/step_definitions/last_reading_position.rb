@@ -3,8 +3,7 @@ Given(/^I have read the book to certain position$/) do
 end
 
 And(/^I exit the book$/) do
-  book_reader_page.go_back
-  expect_page(my_library_page)
+  navigate_back_to_my_library
 end
 
 When(/^I open the book again$/) do
@@ -25,8 +24,8 @@ And(/^I continue reading turning (\d+) pages forward$/) do |pages_to_turn|
 end
 
 And(/^I tap on bookmark link$/) do
-   book_reader_your_bookmarks_highlights_page.to_have_a_bookmark
-   book_reader_your_bookmarks_highlights_page.tap_on_bookmark_link
+  book_reader_your_bookmarks_highlights_page.to_have_a_bookmark
+  book_reader_your_bookmarks_highlights_page.tap_on_bookmark_link
 end
 
 And(/^I choose not to sign in$/) do

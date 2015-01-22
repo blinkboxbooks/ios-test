@@ -23,6 +23,11 @@ module PageObjectModel
       bookmark_book_title.wait_for_element_exists(timeout: timeout_short)
       bookmark_book_title.touch
     end
+
+    def click_on_no_button
+      sign_in_popup_title.wait_for_element_exists(timeout: timeout_short)
+      no_button.touch
+    end
   end
 end
 
