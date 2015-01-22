@@ -1,6 +1,5 @@
 module PageObjectModel
   module UserLibraryActions
-
     def open_settings_menu
       user_library_page.open_settings
     end
@@ -41,11 +40,10 @@ module PageObjectModel
       #wait_for_book_reader_page
     end
 
-    #  def read_first_book
-    #    user_library_page.from_options_menu_choose("Read")
-    #    wait_for_book_reader_page
-    #  end
-
+    def read_first_book
+      user_library_page.choose_from_options_menu("Read")
+      expect_page(book_reader_page)
+    end
   end
 end
 

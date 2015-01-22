@@ -59,7 +59,6 @@ module PageObjectModel
       dismiss_info_panel
       user_library_sliding_tabs.my_library_tab.touch
     end
-
   end
 end
 

@@ -7,6 +7,11 @@ module PageObjectModel
       book_reader_page.reading_header_bar.back_button.wait_tap
       expect_page(my_library_page)
     end
+
+    def navigate_back_to_my_library
+      book_reader_page.go_back
+      expect_page(my_library_page)
+    end
   end
 end
 
