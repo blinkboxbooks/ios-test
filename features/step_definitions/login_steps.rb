@@ -23,3 +23,7 @@ end
 And(/^I see the incorrect email address and password error message popup with send reset link$/) do
   expect(sign_in_page).to have_incorrect_credentials_popup
 end
+
+Given(/^I am signed in as a user who has downloaded books$/) do
+  signin_with_type_of_account("has_downloaded_books")
+end

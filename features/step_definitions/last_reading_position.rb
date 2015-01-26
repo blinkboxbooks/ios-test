@@ -2,10 +2,6 @@ Given(/^I have read the book to certain position$/) do
   book_reader_page.invoke_web_reader_header_and_footer
 end
 
-And(/^I exit the book$/) do
-  navigate_back_to_my_library
-end
-
 When(/^I open the book again$/) do
   read_first_book
 end
@@ -54,4 +50,12 @@ end
 
 And(/^I am on selected chapter$/) do
   expect_page(book_reader_page)
+end
+
+And(/^I exit the book$/) do
+  navigate_back_to_my_library
+end
+
+Given(/^I exit the book to go back to library screen$/) do
+  navigate_back_to_my_library_from_book_reader
 end

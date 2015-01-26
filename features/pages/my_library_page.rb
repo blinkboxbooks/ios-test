@@ -1,8 +1,13 @@
 module PageObjectModel
   class MyLibraryPage < UserLibraryPage
+    trait "UISegmentedControl UISegment UISegmentLabel {text BEGINSWITH 'My Library'} isSelected:true"
+    element :my_library_book_counter, "UISegmentedControl UISegment UISegmentLabel {text BEGINSWITH 'My Library'}"
 
-    #trait "UISegment label {text BEGINSWITH 'My Library'}" #need to figure out how to get the selected value
-    trait "UIImageView marked:'blinkbox_nav_logo'" #temp fix as we cant see the text!
+    def current_number_of_books_in_my_library
+      x = my_library_book_counter.text
+      x.scan(/\d+/).first.to_i
+    end
+
   end
 end
 

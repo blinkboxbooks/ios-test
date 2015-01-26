@@ -24,6 +24,12 @@ module PageModels
       expect_page(my_library_page)
     end
 
+    def signin_with_type_of_account(account_type)
+      user_library_page.open_settings_and_sign_in
+      sign_in_page.await
+      submit_sign_in_details(test_data['users']["#{account_type}"]['emailaddress'], test_data['users']["#{account_type}"]['password'])
+    end
+
     def enter_app_as(username, password)
       if welcome_page.displayed?
         welcome_page.sign_up

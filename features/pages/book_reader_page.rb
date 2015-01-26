@@ -21,11 +21,12 @@ module PageObjectModel
 
     @@forward_tapping_point = {x: 90, y: 0}
     @@backward_tapping_point = {x: -90, y: 0}
+
     def turn_pages(number_of_pages)
       point = number_of_pages.to_i >= 0 ? @@forward_tapping_point : @@backward_tapping_point
       (number_of_pages.to_i.abs).times do
-      touch("BBBWebView", :offset => {:x => point[:x], :y => point[:y]})
-      sleep 1
+        touch("BBBWebView", :offset => {:x => point[:x], :y => point[:y]})
+        sleep 1
       end
     end
 
@@ -34,14 +35,14 @@ module PageObjectModel
         wait_poll(until_exists: reading_header_bar.button_options.selector, timeout: timeout_short) do
           webview_reader.wait_tap(timeout: timeout_short)
           sleep 1
+        end
       end
-    end
       wait_for_elements_exist(
           [
               reading_header_bar.header_bar.selector,
               reading_footer_bar.footer_bar.selector,
               reading_footer_bar.chapter_and_progress_label.selector
-          ],:timeout => timeout_long)
+          ], :timeout => timeout_long)
       capture_footer_text
     end
 
@@ -53,7 +54,7 @@ module PageObjectModel
           webview_reader.touch
         end
       end
-      wait_for_elements_do_not_exist([reading_header_bar.header_bar.selector,reading_footer_bar.slider.selector], timeout: timeout_long)
+      wait_for_elements_do_not_exist([reading_header_bar.header_bar.selector, reading_footer_bar.slider.selector], timeout: timeout_long)
     end
 
     def get_header_and_footer_text
@@ -71,20 +72,20 @@ module PageObjectModel
     def move_slider_to_position(progress_percentage)
       value = progress_percentage.to_f/100
       invoke_web_reader_header_and_footer
-      query(reading_footer_bar.slider.selector, [{setValue:value},{animated:1}])
+      query(reading_footer_bar.slider.selector, [{setValue: value}, {animated: 1}])
       sleep 1
       close_web_reader_header_and_footer
     end
 
     def add_bookmark_via_webview_reader
       invoke_web_reader_header_and_footer
-      add_bookmark_icon.wait_tap(timeout:timeout_short)
+      add_bookmark_icon.wait_tap(timeout: timeout_short)
       wait_for_bookmark_to_appear
     end
 
     def remove_bookmark_via_webview_reader
       invoke_web_reader_header_and_footer
-      remove_bookmark_icon.wait_tap(timeout:timeout_short)
+      remove_bookmark_icon.wait_tap(timeout: timeout_short)
       wait_for_bookmark_to_disappear
     end
 
@@ -112,7 +113,7 @@ module PageObjectModel
               copy_callout_option.selector,
               define_callout_option.selector,
               highlight_callout_option.selector
-          ],:timeout => timeout_long)
+          ], :timeout => timeout_long)
     end
 
     def wait_for_callout_options_not_to_exist
@@ -121,7 +122,7 @@ module PageObjectModel
               copy_callout_option.selector,
               define_callout_option.selector,
               highlight_callout_option.selector
-          ],:timeout => timeout_long)
+          ], :timeout => timeout_long)
     end
 
     def invoke_callout_popup
@@ -139,6 +140,12 @@ module PageObjectModel
 
     def go_back
       reading_header_bar.back_button.touch
+    end
+
+    def choose_option_from_reading_menu(option)
+      invoke_web_reader_header_and_footer
+      reading_option_menu.option_menu.wait_tap(timeout: timeout_short)
+      wait_tap("* marked:'#{option}'")
     end
   end
 end
