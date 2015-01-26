@@ -12,6 +12,9 @@ However, Xcode will need to be installed on the system with [command line tools]
 usage
 ====
 
+1. Git clone and pull git@git.mobcastdev.com:iOS/BBBIosApp.git
+2. xcodebuild -target BBBApp -scheme BBBQA -configuration Release -sdk iphonesimulator7.1 clean build
+
 Typical usage
 ```
 bundle install
@@ -27,6 +30,7 @@ rake calabash:console
 running a test
 =============
 
+```
 BBB_ENV=PROD RESET_BETWEEN_SCENARIOS=1 APP_BUNDLE_PATH=build/blinkbox.app cucumber -r features features/library/library_navigation.feature 
 
 BBB_ENV=PROD > sets the blinkbox.app to point to 'PROD' (valid options are DEVINT, QA, PROD).
@@ -34,7 +38,7 @@ BBB_ENV=PROD > sets the blinkbox.app to point to 'PROD' (valid options are DEVIN
 RESET_BETWEEN_SCENARIOS=1 > ensures that the simulator is reset between each scenario.
 
 APP_BUNDLE_PATH=build/blinkbox.app > location of thr .app file under test.
-
+```
 
 project structure
 =================
