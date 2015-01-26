@@ -17,9 +17,7 @@ module PageObjectModel
     def get_first_book_details_from_about_page
       user_library_page.choose_from_options_menu("About")
       expect_page(about_this_book_page)
-      @book_author = about_this_book_page.book_author.text
-      @book_title = about_this_book_page.book_title.text
-      return @book_author,@book_title
+      about_this_book_page.get_book_and_author_details_from_about_this_book
     end
 
     def goto_user_library_tab(user_option)
@@ -37,7 +35,6 @@ module PageObjectModel
       goto_user_library_tab(library_section)
       user_library_page.open_first_book
       expect_page(book_reader_page)
-      #wait_for_book_reader_page
     end
 
     def read_first_book

@@ -26,3 +26,11 @@ end
 Then(/^I can see that the text has been highlighted$/) do
   pending
 end
+
+Given(/^I choose "([^"]*)" from the Options menu$/) do |option|
+  user_library_page.choose_from_options_menu(option)
+end
+
+And(/^I go back to user library screen$/) do
+  navigate_back_to_my_library_from_book_reader
+end
