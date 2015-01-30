@@ -1,0 +1,19 @@
+ users:
+   existing:
+     emailaddress: 
+     password: 
+   withcard:
+     emailaddress: 
+     password: 
+   has_downloaded_books:
+     emailaddress: 
+     password: 
+
+ emails:
+   valid: 
+   happypath_user: 
+   dummy_email: 
+
+ passwords:
+    valid_password: 
+    not_matching_password: 
