@@ -63,3 +63,13 @@ rake ios:reset                     # Reset all simulators [ Requires privacy acc
 rake ios:setup                     # Performs download,build and installation of app onto simulator
 
 ```
+
+## Copyright
+2015 blinkbox books Ltd. See LICENCE for details.
+
+## Key Contributors
+* [Sher Bhachu](https://github.com/sherbhachu)
+* [Alex Ikhelis](https://github.com/aikhelis)
+* [Ankur Gamit](https://github.com/ankurgamit)
+* [Jagdeep Kalsi](https://github.com/jkalsi)
+* [Alex Jones](https://github.com/AlexsJones)
